@@ -19,26 +19,21 @@
                     controller: 'EditorController'
                 })
         }])
-        /*.directive('markdown', ['$timeout',function ($timeout) {
-         return{
-         restrict: 'EA',
-         require: 'ngModel',
-         link: function ($scope, element, attrs, ctrl) {
-         console.log($scope.editor);
-         var text = marked($(element).text());
-         $timeout(function () {
-         $scope.result = text;
-         })
-         }
-         }
-         }])*/
+        .directive('markdown', [function () {
+            return {
+                restrict: 'EA',
+                link: function ($scope, element, attrs) {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        }])
         .filter('to_trusted', ['$sce', function ($sce) {
             return function (text) {
                 if (text == null || text == [] || text == undefined || text == "")return "";
                 return $sce.trustAsHtml(text);
             };
         }])
-        .filter('markdown', ['$sce',function ($sce) {
+        .filter('render', ['$sce', function ($sce) {
             return function (input) {
                 if (input.length != 0) {
                     input = marked(input);

@@ -1,5 +1,9 @@
-<div ng-controller="EditorController as vm" class="container">
-    <textarea rows="100%" cols="100%" id="editor"  ng-model="vm.editor">
+<div ng-controller="EditorController as vm">
+    <script>hljs.initHighlightingOnLoad();</script>
+    <h3 class="title">基于angular的markdown编辑器</h3>
+    <div class="container" >
+    <textarea id="editor" ng-model="vm.editor">
     </textarea>
-    <div id="preview" ng-bind-html="vm.editor | markdown"></div>
+        <div id="preview" ng-bind-html="vm.editor | render"></div>
+    </div>
 </div>
