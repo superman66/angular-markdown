@@ -1,0 +1,5 @@
+<div ng-controller="EditorController as vm" class="container">
+    <textarea rows="100%" cols="100%" id="editor"  ng-model="vm.editor">
+    </textarea>
+    <div id="preview" ng-bind-html="vm.editor | markdown"></div>
+</div>
