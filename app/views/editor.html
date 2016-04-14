@@ -1,0 +1,7 @@
+<div ng-controller="EditorController as vm">
+    <h3 class="title">基于angular的markdown编辑器</h3>
+    <div class="container" >
+    <textarea id="editor" ng-model="vm.editor"></textarea>
+        <div id="preview" ng-bind-html="vm.editor | render"></div>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+{
+  "name": "angular-markdown",
+  "description": "angular-markdown-editor",
+  "version": "0.0.0",
+  "homepage": "https://github.com/angular/angular-seed",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular-highlightjs": "^0.6.1"
+  }
+}
