@@ -10,19 +10,7 @@
         vm.result = '';
         return vm;
     }
-    marked.setOptions({
-        renderer: new marked.Renderer(),
-        gfm: true,
-        tables: true,
-        breaks: false,
-        pedantic: false,
-        sanitize: false,
-        smartLists: true,
-        smartypants: false,
-        highlight: function (code) {
-            return hljs.highlightAuto(code).value;
-        }
-    });
+
     angular.module('myApp.editor', ['ngRoute', 'hljs'])
         .config(['$routeProvider', function ($routeProvider) {
             $routeProvider

@@ -38,6 +38,9 @@ h3 {
 }
 .title{
     padding: 15px;
+    background: #333;
+    color: #fff;
+    margin: 0  0 15px 0;
 }
 .container {
     display: flex;
