@@ -10,8 +10,20 @@
         vm.result = '';
         return vm;
     }
-
-    angular.module('myApp.editor', ['ngRoute'])
+    marked.setOptions({
+        renderer: new marked.Renderer(),
+        gfm: true,
+        tables: true,
+        breaks: false,
+        pedantic: false,
+        sanitize: false,
+        smartLists: true,
+        smartypants: false,
+        highlight: function (code) {
+            return hljs.highlightAuto(code).value;
+        }
+    });
+    angular.module('myApp.editor', ['ngRoute', 'hljs'])
         .config(['$routeProvider', function ($routeProvider) {
             $routeProvider
                 .when('/editor', {
@@ -23,15 +35,8 @@
             return {
                 restrict: 'EA',
                 link: function ($scope, element, attrs) {
-                    hljs.initHighlightingOnLoad();
                 }
             }
-        }])
-        .filter('to_trusted', ['$sce', function ($sce) {
-            return function (text) {
-                if (text == null || text == [] || text == undefined || text == "")return "";
-                return $sce.trustAsHtml(text);
-            };
         }])
         .filter('render', ['$sce', function ($sce) {
             return function (input) {

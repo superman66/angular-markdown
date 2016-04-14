@@ -6,6 +6,6 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-
+    "angular-highlightjs": "^0.6.1"
   }
 }
