@@ -36,12 +36,14 @@ h3 {
 .serif {
     font-family: 'Old Standard TT', serif;
 }
-.title{
+
+.title {
     padding: 15px;
     background: #333;
     color: #fff;
-    margin: 0  0 15px 0;
+    margin: 0 0 15px 0;
 }
+
 .container {
     display: flex;
     flex-direction: row;
@@ -78,11 +80,16 @@ h3 {
 }
 
 pre {
-    white-space: pre-wrap; /* css-3 */
-    white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
-    white-space: -pre-wrap; /* Opera 4-6 */
-    white-space: -o-pre-wrap; /* Opera 7 */
-    word-wrap: break-word; /* Internet Explorer 5.5+ */
+    white-space: pre-wrap;
+    /* css-3 */
+    white-space: -moz-pre-wrap;
+    /* Mozilla, since 1999 */
+    white-space: -pre-wrap;
+    /* Opera 4-6 */
+    white-space: -o-pre-wrap;
+    /* Opera 7 */
+    word-wrap: break-word;
+    /* Internet Explorer 5.5+ */
     background-color: #f8f8f8;
     border: 1px solid #dfdfdf;
     margin-top: 1.5em;
@@ -95,61 +102,97 @@ pre code {
     border: 0;
     padding: 0;
 }
+header {
 
-.modal-wrapper {
-    position: absolute;
     width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
+
+    background: #333;
+
+    color: #fff;
+
+    padding: 0 15px;
+
+    position: fixed;
+
     z-index: 999;
-    background-color: rgba(51, 51, 51, 0.5);
+
+    height: 50px;
+
+    line-height: 50px;
+}
+.pull-left {
+    float: left;
 }
 
-.modal-inner {
-    margin-top: 200px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 600px;
-    height: 225px;
-    background-color: #fff;
-    opacity: 1;
-    z-index: 1000;
-}
-
-.modal-close-btn {
+.pull-right {
     float: right;
-    display: inline-block;
-    margin-right: 5px;
-    color: #ff4336;
 }
 
-.modal-close-btn:hover {
-    float: right;
-    display: inline-block;
-    margin-right: 5px;
-    color: #8d0002;
+.clearfix:before, .clearfix:after {
+    content: "";
+    display: table;
 }
 
-.modal-topbar {
+.clearfix:after {
     clear: both;
-    height: 25px;
 }
 
-.modal-inner .link-area {
-    margin: 10px;
-    height: 170px;
+.clearfix {
+    zoom: 1; /* ie 6/7 */
+}
+.content {
 
+    /* clear: both; */
+
+    /* height: 100%; */
+
+    padding-top: 50px;
+}
+.category-list, .note-list {
+    width: 200px;
+    position: absolute;
+    height: 94%;
+    background: #fff;
+    border: 1px solid #ddd;
 }
 
-.modal-inner textarea {
+.category-list {
+}
+
+.category-list a {
+    display: block;
+    background: #fff;
+    padding: 10px 16px;
+    border-bottom: 1px solid #ddd;
+}
+
+.note-list {
+
+    left: 200px;
+
+    width: 300px;
+}
+
+.note-list a {
+    display: block;
+    background: #fff;
+    padding: 16px 15px;
+    border-bottom: 1px solid #ddd;
+}
+.category-list a:hover, .note-list a:hover, .active {
+    background: #eee;
+}
+.add{
+    position: absolute;
+    height: 40px;
+    line-height: 40px;
+    bottom:0;
+    width: 100%;
+    text-align: center;
+    border-top: 1px solid #ddd;
+    cursor: pointer;
+}
+.detail{
     width: 100%;
     height: 100%;
-    margin: 0;
-    padding: 0;
-}
-
-.version {
-    color: white;
-    font-size: 0.8em !important;
 }

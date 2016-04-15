@@ -1,0 +1,24 @@
+<div ng-controller="IndexController as vm">
+    <header>markdown笔记本</header>
+    <div class="content clearfix">
+        <div class="category-list pull-left">
+            <div class="">
+                <a ng-repeat="category in vm.categoryList">{{category.name}}</a>
+            </div>
+            <div class="add">
+                新增分类
+            </div>
+        </div>
+        <div class="note-list pull-left">
+            <div>
+            <a ng-repeat="category in vm.categoryList">{{category.name}}</a>
+            </div>
+            <div class="add">
+                新增笔记
+            </div>
+        </div>
+        <div class="detail pull-right">
+
+        </div>
+    </div>
+</div>

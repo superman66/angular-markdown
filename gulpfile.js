@@ -161,7 +161,7 @@ gulp.task('app-rename', function () {
     var stream = gulp.src(app_paths.index_template)
         .pipe(rename({
             basename: "index",
-            suffix: "-build",
+            suffix: "",
             extname: ".html"
         }))
         .pipe(gulp.dest('app/'))
@@ -175,7 +175,7 @@ gulp.task('app-rename', function () {
 gulp.task('app-imageisux', function () {
     return gulp.src([
 
-            'app/statics/web/images/transfer/back.png',
+            'app/statics/web/images/transfer/back.png'
         ])
         .pipe(imageisux('isux', false))
         .pipe(notify({message: 'isux hint image task complete'}));

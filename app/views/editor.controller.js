@@ -11,28 +11,30 @@
         return vm;
     }
 
-    angular.module('myApp.editor', ['ngRoute', 'hljs'])
+    function IndexController() {
+        var vm = this;
+        vm.categoryList = [
+            {id: 1, name: '分类1'},
+            {id: 2, name: '分类2'},
+            {id: 3, name: '分类3'},
+            {id: 4, name: '分类4'},
+            {id: 5, name: '分类5'}
+        ]
+    }
+
+    angular.module('myApp.editor', ['ngRoute', 'hljs', 'myApp.editor.filter'])
         .config(['$routeProvider', function ($routeProvider) {
             $routeProvider
                 .when('/editor', {
                     templateUrl: 'views/editor.html',
                     controller: 'EditorController'
                 })
+                .when('/index', {
+                    templateUrl: 'views/index.html',
+                    controller: 'IndexController'
+
+                })
         }])
-        .directive('markdown', [function () {
-            return {
-                restrict: 'EA',
-                link: function ($scope, element, attrs) {
-                }
-            }
-        }])
-        .filter('render', ['$sce', function ($sce) {
-            return function (input) {
-                if (input.length != 0) {
-                    input = marked(input);
-                }
-                return $sce.trustAsHtml(input);
-            }
-        }])
-        .controller('EditorController', EditorController);
+        .controller('EditorController', EditorController)
+        .controller('IndexController', IndexController);
 })();
