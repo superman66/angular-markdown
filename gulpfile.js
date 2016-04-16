@@ -70,11 +70,12 @@ gulp.task('app-revJs', ['app-js', 'app-rename'], function () {
 gulp.task('app-lib', ['app-css'], function (cb) {
     var libArr = [
         'node_modules/jquery/dist/jquery.min.js',
-        'app/bower_components/angular/angular.js',
-        'app/bower_components/angular-route/angular-route.js',
+        'bower_components/angular/angular.js',
+        'bower_components/angular-route/angular-route.js',
         'node_modules/marked/marked.min.js',
         'node_modules/highlight.js/lib/highlight.js',
-        'app/bower_components/angular-highlightjs/angular-highlightjs.min.js'
+        'bower_components/angular-highlightjs/angular-highlightjs.min.js',
+        'node_modules/ngstorage/ngStorage.min.js'
     ];
     return gulp.src(libArr)
         .pipe(concat('lib.js'))
