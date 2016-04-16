@@ -3,36 +3,47 @@
     <div class="content">
         <div class="category-content">
             <div class="category-list">
-                <a href="#" class="category-item">分类1</a>
-                <a href="#" class="category-item">分类1</a>
-                <a href="#" class="category-item">分类1</a>
+                <a class="category-item" ng-class="{'active': vm.categorySelected == category.id}"
+                   ng-repeat="category in vm.categoryList"
+                   ng-click="vm.selectCategory(category.id)">{{category.name}}</a>
             </div>
-            <div class="plus">增加</div>
+            <div class="plus" ng-click="vm.open('分类')">增加</div>
         </div>
 
         <div class="note-content">
             <div class="note-list">
-                <a href="#" class="note-item">笔记1</a>
-                <a href="#" class="note-item">笔记1</a>
-                <a href="#" class="note-item">笔记1</a>
-                <a href="#" class="note-item">笔记1</a>
-                <a href="#" class="note-item">笔记1</a>
+                <a class="note-item" ng-class="{'active': vm.noteSelected == note.id}" ng-repeat="note in vm.noteList"
+                   ng-click="vm.selectNote(note)">{{note.title}}</a>
             </div>
-            <div class="plus">增加</div>
+            <div class="plus" ng-click="vm.open('笔记本')">增加</div>
         </div>
         <div class="detail">
             <div class="detail-box">
                 <div class="post-title">{{vm.note.title}}
                     <a class="pull-right btn btn-edit" ng-click="vm.edit()" ng-if="!vm.editStatus">编辑</a>
                 </div>
-                <input class="post-title" type="text"  ng-model="vm.note.title" ng-if="vm.editStatus"/>
+                <input class="post-title form-control" type="text" ng-model="vm.note.title" ng-if="vm.editStatus"/>
                 <a class="pull-right btn btn-edit" ng-click="vm.save()" ng-if="vm.editStatus">保存</a>
-                <div class="post-date">
+                <div class="post-date" ng-if="vm.note.title">
                     <span class="post-create">创建时间：{{vm.note.createTime}}</span>
                     <span class="post-update">更新时间：{{vm.note.updateTime}}</span>
+                    <span ng-if="vm.editStatus">（支持markdown语法）</span>
                 </div>
                 <div class="post-content" ng-if="!vm.editStatus" ng-bind-html="vm.note.content | render"></div>
-                <textarea class="post-content" ng-model="vm.note.content" ng-if="vm.editStatus">{{vm.note.content}}</textarea>
+                <textarea class="post-content" ng-model="vm.note.content"
+                          ng-if="vm.editStatus">{{vm.note.content}}</textarea>
+            </div>
+        </div>
+    </div>
+    <div class="modal-mask modal-animate" ng-if="vm.openModal">
+        <div class="modal">
+            <div class="modal-header">新增{{vm.type}}</div>
+            <div class="modal-body">
+                <input type="text" class="form-control" ng-model="vm.name" placeholder="请输入{{vm.type}}名称"/>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-primary" ng-click="vm.add()">确定</a>
+                <a class="btn " ng-click="vm.cancel()">取消</a>
             </div>
         </div>
     </div>

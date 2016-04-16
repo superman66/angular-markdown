@@ -4,9 +4,12 @@
 angular.module('myApp.editor.filter', [])
     .filter('render', ['$sce', function ($sce) {
         return function (input) {
-            if (input.length != 0) {
-                input = marked(input);
+            if(!angular.isUndefined(input)){
+                if (input.length != 0) {
+                    input = marked(input);
+                }
             }
+
             return $sce.trustAsHtml(input);
         }
     }]);
