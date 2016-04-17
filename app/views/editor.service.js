@@ -33,8 +33,8 @@
             var note = {
                 id: vm.categoryList.length + 1,
                 title: vm.name,
-                createTime: $filter.('date')(new Date(), 'yyyy-MM-dd HH:mm:ss'),
-                updateTime: $filter.('date')(new Date(), 'yyyy-MM-dd HH:mm:ss')
+                createTime: $filter('date')(new Date(), 'yyyy-MM-dd HH:mm:ss'),
+                updateTime: $filter('date')(new Date(), 'yyyy-MM-dd HH:mm:ss')
             };
             console.log(vm.categoryList[vm.categorySelected - 1]);
             vm.noteList = vm.categoryList[vm.categorySelected - 1].note;

@@ -47,7 +47,7 @@
     "update-index-async": "node -e \"require('shelljs/global'); sed('-i', /\\/\\/@@NG_LOADER_START@@[\\s\\S]*\\/\\/@@NG_LOADER_END@@/, '//@@NG_LOADER_START@@\\n' + sed(/sourceMappingURL=angular-loader.min.js.map/,'sourceMappingURL=bower_components/angular-loader/angular-loader.min.js.map','app/bower_components/angular-loader/angular-loader.min.js') + '\\n//@@NG_LOADER_END@@', 'app/index-async.html');\""
   },
   "dependencies": {
-    "angular-animate": "^1.5.3",
+    "angular-animate": "^1.4.1",
     "gulp": "^3.9.1",
     "highlight.js": "^9.3.0",
     "jquery": "^2.2.3",
