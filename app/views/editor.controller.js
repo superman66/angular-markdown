@@ -15,10 +15,10 @@
         var vm = this;
         vm.$storage = $localStorage;
         vm.editStatus = false;
-        vm.categorySelected = 0;
-        vm.noteSelected = 0;
+        vm.categorySelected = 1;
+        vm.noteSelected = 1;
         vm.openModal = false;
-        vm.noteList = [];
+        vm.category = {};
         vm.note = {};
         vm.categoryList = [
             {
@@ -64,6 +64,8 @@
                 ]
             }
         ];
+        vm.noteList = vm.categoryList[0].note;
+        vm.note = vm.noteList[0];
         vm.edit = function () {
             vm.editStatus = true;
         };
@@ -86,24 +88,46 @@
         };
         vm.add = function () {
             if (vm.type == '分类') {
-                vm.note = {
+                vm.category = {
                     id: vm.categoryList.length + 1,
                     name: vm.name,
-                    note: {}
+                    note: []
                 };
-                vm.categoryList.push(vm.note);
+                vm.categoryList.push(vm.category);
+                vm.name = '';
+                console.log(vm.categoryList);
             }
             else if (vm.type == '笔记本') {
+                vm.note = {
+                    id: vm.categoryList.length + 1,
+                    title: vm.name,
+                    createTime: new Date()
+                };
+                console.log(vm.categoryList[vm.categorySelected - 1]);
+                vm.noteList = vm.categoryList[vm.categorySelected - 1].note;
+
+                vm.noteList.push(vm.note);
+                vm.categoryList[vm.categorySelected - 1].note = vm.noteList;
+                vm.name = '';
             }
             vm.openModal = false;
         };
+
         vm.cancel = function () {
             vm.openModal = false;
+        };
+
+        vm.deleteCategory = function (id) {
+
+        };
+
+        vm.deleteNote = function (id) {
+
         }
     }
 
     IndexController.$inject = ['$localStorage'];
-    angular.module('myApp.editor', ['ngRoute', 'hljs', 'myApp.editor.filter', 'ngStorage'])
+    angular.module('myApp.editor', ['ngRoute', 'hljs', 'editor.filter', 'ngStorage', 'editor.service'])
         .config(['$routeProvider', function ($routeProvider) {
             $routeProvider
                 .when('/editor', {
