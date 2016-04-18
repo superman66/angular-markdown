@@ -19,7 +19,6 @@ var gulp = require('gulp'),
     jshint = require('gulp-jshint'),
     uglify = require('gulp-uglify'),
     imagemin = require('gulp-imagemin'),
-    imageisux = require('gulp-imageisux'),
     rename = require('gulp-rename'),
     concat = require('gulp-concat'),
     notify = require('gulp-notify'),
@@ -173,15 +172,6 @@ gulp.task('app-rename', function () {
 });
 
 
-//智图图片压缩
-gulp.task('app-imageisux', function () {
-    return gulp.src([
-
-            'app/statics/web/images/transfer/back.png'
-        ])
-        .pipe(imageisux('isux', false))
-        .pipe(notify({message: 'isux hint image task complete'}));
-});
 
 
 /*bulid task*/
