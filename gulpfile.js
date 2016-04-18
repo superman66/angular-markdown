@@ -19,7 +19,6 @@ var gulp = require('gulp'),
     jshint = require('gulp-jshint'),
     uglify = require('gulp-uglify'),
     imagemin = require('gulp-imagemin'),
-    imageisux = require('gulp-imageisux'),
     rename = require('gulp-rename'),
     concat = require('gulp-concat'),
     notify = require('gulp-notify'),
@@ -75,7 +74,8 @@ gulp.task('app-lib', ['app-css'], function (cb) {
         'node_modules/marked/marked.min.js',
         'node_modules/highlight.js/lib/highlight.js',
         'bower_components/angular-highlightjs/angular-highlightjs.min.js',
-        'node_modules/ngstorage/ngStorage.min.js'
+        'node_modules/ngstorage/ngStorage.min.js',
+        'node_modules/angular-animate/angular-animate.min.js'
     ];
     return gulp.src(libArr)
         .pipe(concat('lib.js'))
@@ -101,11 +101,11 @@ gulp.task('app-revLib', ['app-lib', 'app-rename'], function () {
 //压缩/合gu并/CSS 生成版本号
 gulp.task('app-css', function (cb) {
     return gulp.src([                                        //- 需要处理的css文件，放到一个字符串数组里
-            'app/bower_components/html5-boilerplate/dist/css/normalize.css',
-            'app/bower_components/html5-boilerplate/dist/css/main.css',
+            'bower_components/html5-boilerplate/dist/css/normalize.css',
+            'bower_components/html5-boilerplate/dist/css/main.css',
             'node_modules/highlight.js/styles/atelier-cave-light.css',
             'app/app.css',
-            'app/views/**/*.css'
+            'app/static/**/*.css'
         ])
         .pipe(concatcss('main.css'))                        //合并CSS
         .pipe(minifycss())                                      //压缩CSS
@@ -172,15 +172,6 @@ gulp.task('app-rename', function () {
 });
 
 
-//智图图片压缩
-gulp.task('app-imageisux', function () {
-    return gulp.src([
-
-            'app/statics/web/images/transfer/back.png'
-        ])
-        .pipe(imageisux('isux', false))
-        .pipe(notify({message: 'isux hint image task complete'}));
-});
 
 
 /*bulid task*/

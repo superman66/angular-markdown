@@ -2,7 +2,7 @@
  * Created by superman on 2016/4/15.
  */
 
-(function () {
+;(function () {
     'uss strict';
     angular.module('editor.filter', [])
         .filter('render', ['$sce', function ($sce) {
@@ -16,4 +16,4 @@
                 return $sce.trustAsHtml(input);
             }
         }]);
-})()
+})();
