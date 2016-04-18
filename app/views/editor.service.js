@@ -1,8 +1,8 @@
 /**
  * Created by superman on 2016/4/17.
  */
-(function () {
-    "use strict"
+;(function () {
+    "use strict";
     function NoteService($localStorage, $filter) {
 
         var _getCategoryList = function () {

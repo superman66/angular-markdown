@@ -1,7 +1,7 @@
 /**
  * Created by superman on 2016/4/13.
  */
-(function () {
+;(function () {
     'use strict';
 
     function EditorController() {
