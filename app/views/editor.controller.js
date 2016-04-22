@@ -11,61 +11,23 @@
         return vm;
     }
 
-    function IndexController($localStorage) {
+    function IndexController($localStorage, NoteService, $filter) {
         var vm = this;
         vm.$storage = $localStorage;
+        $localStorage.categoryList = [];
         vm.editStatus = false;
         vm.categorySelected = 1;
         vm.noteSelected = 1;
         vm.openModal = false;
         vm.category = {};
         vm.note = {};
-        vm.categoryList = [
-            {
-                id: 1, name: '分类1',
-                note: [
-                    {
-                        id: 1, title: '笔记1', content: '# header', createTime: '2016-4-4', updateTime: '2016-4-5'
-                    },
-                    {
-                        id: 2, title: '笔记2', content: '# header', createTime: '2016-4-4', updateTime: '2016-4-5'
-                    },
-                    {
-                        id: 3, title: '笔记3', content: '# header', createTime: '2016-4-4', updateTime: '2016-4-5'
-                    }
-                ]
-            },
-            {
-                id: 2, name: '分类2',
-                note: [
-                    {
-                        id: 1, title: '笔记4', content: '# header', createTime: '2016-4-4', updateTime: '2016-4-5'
-                    },
-                    {
-                        id: 2, title: '笔记5', content: '# header', createTime: '2016-4-4', updateTime: '2016-4-5'
-                    },
-                    {
-                        id: 3, title: '笔记6', content: '# header', createTime: '2016-4-4', updateTime: '2016-4-5'
-                    }
-                ]
-            },
-            {
-                id: 3, name: '分类3',
-                note: [
-                    {
-                        id: 1, title: '笔记6', content: '# header', createTime: '2016-4-4', updateTime: '2016-4-5'
-                    },
-                    {
-                        id: 2, title: '笔记7', content: '# header', createTime: '2016-4-4', updateTime: '2016-4-5'
-                    },
-                    {
-                        id: 3, title: '笔记8', content: '# header', createTime: '2016-4-4', updateTime: '2016-4-5'
-                    }
-                ]
-            }
-        ];
-        vm.noteList = vm.categoryList[0].note;
-        vm.note = vm.noteList[0];
+        vm.categoryList = [];
+        vm.noteList = [];
+        vm.note = {};
+
+
+        vm.categoryList = NoteService.getCategoryList();
+
         vm.edit = function () {
             vm.editStatus = true;
         };
@@ -75,7 +37,7 @@
 
         vm.selectCategory = function (id) {
             vm.categorySelected = id;
-            vm.noteList = vm.categoryList[id - 1].note;
+            vm.noteList = vm.categoryList[id - 1].noteList;
         };
         vm.selectNote = function (note) {
             vm.noteSelected = note.id;
@@ -86,31 +48,37 @@
             vm.type = type;
             vm.openModal = true;
         };
-        vm.add = function () {
-            if (vm.type == '分类') {
-                vm.category = {
-                    id: vm.categoryList.length + 1,
+        vm.add = function (type) {
+            //添加分类
+            if (type == 'category') {
+                var category = {
+                    id: NoteService.generateId(vm.categoryList),
                     name: vm.name,
-                    note: []
+                    noteList: []
                 };
-                vm.categoryList.push(vm.category);
+                NoteService.saveCategory(category);
                 vm.name = '';
                 console.log(vm.categoryList);
+                vm.openModal = false;
             }
-            else if (vm.type == '笔记本') {
-                vm.note = {
-                    id: vm.categoryList.length + 1,
+            //添加笔记本
+            else if (type == 'note') {
+                var note = {
+                    id: NoteService.generateId(),
                     title: vm.name,
-                    createTime: new Date()
+                    createTime: $filter('date')(new Date(), 'yyyy-MM-dd HH:mm:ss'),
+                    updateTime: $filter('date')(new Date(), 'yyyy-MM-dd HH:mm:ss')
                 };
-                console.log(vm.categoryList[vm.categorySelected - 1]);
-                vm.noteList = vm.categoryList[vm.categorySelected - 1].note;
+                NoteService.saveNote(note);
+                console.log(vm.categoryList);
+                vm.noteList = vm.categoryList[vm.categorySelected - 1].noteList;
 
                 vm.noteList.push(vm.note);
-                vm.categoryList[vm.categorySelected - 1].note = vm.noteList;
+                vm.categoryList[vm.categorySelected - 1].noteList = vm.noteList;
                 vm.name = '';
+                vm.openModal = false;
             }
-            vm.openModal = false;
+
         };
 
         vm.cancel = function () {
@@ -126,7 +94,7 @@
         }
     }
 
-    IndexController.$inject = ['$localStorage'];
+    IndexController.$inject = ['$localStorage', 'NoteService', '$filter'];
     angular.module('myApp.editor', ['ngRoute', 'hljs', 'editor.filter', 'ngStorage', 'editor.service'])
         .config(['$routeProvider', function ($routeProvider) {
             $routeProvider

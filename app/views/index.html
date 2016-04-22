@@ -4,10 +4,10 @@
         <div class="category-content">
             <div class="category-list">
                 <a class="category-item" ng-class="{'active': vm.categorySelected == category.id}"
-                   ng-repeat="category in vm.categoryList"
+                   ng-repeat="category in vm.categoryList track by $index"
                    ng-click="vm.selectCategory(category.id)">{{category.name}}</a>
             </div>
-            <div class="plus" ng-click="vm.open('分类')">增加</div>
+            <div class="plus" ng-click="vm.open('category')">增加</div>
         </div>
 
         <div class="note-content">
@@ -15,7 +15,7 @@
                 <a class="note-item" ng-class="{'active': vm.noteSelected == note.id}" ng-repeat="note in vm.noteList"
                    ng-click="vm.selectNote(note)">{{note.title}}</a>
             </div>
-            <div class="plus" ng-click="vm.open('笔记本')">增加</div>
+            <div class="plus" ng-click="vm.open('note')">增加</div>
         </div>
         <div class="detail">
             <div class="detail-box">
@@ -37,12 +37,13 @@
     </div>
     <div class="modal-mask modal-animate" ng-if="vm.openModal">
         <div class="modal">
-            <div class="modal-header">新增{{vm.type}}</div>
+            <div class="modal-header" ng-if="vm.type == 'category'">新增分类</div>
+            <div class="modal-header" ng-if="vm.type == 'note'">新增笔记本</div>
             <div class="modal-body">
-                <input type="text" class="form-control" ng-model="vm.name" placeholder="请输入{{vm.type}}名称"/>
+                <input type="text" class="form-control" ng-model="vm.name" placeholder="请输入"/>
             </div>
             <div class="modal-footer">
-                <a class="btn btn-primary" ng-click="vm.add()">确定</a>
+                <a class="btn btn-primary" ng-click="vm.add(vm.type)">确定</a>
                 <a class="btn " ng-click="vm.cancel()">取消</a>
             </div>
         </div>
