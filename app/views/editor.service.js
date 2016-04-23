@@ -18,17 +18,18 @@
         };
         function generateId(list) {
             console.log(list);
-            /*return list.length == 0 ? 1 : list.length + 1;*/
+            return list.length == 0 ? 1 : list.length + 1;
         }
 
         function getCategoryList() {
+            if (!$localStorage.categoryList) {
+                $localStorage.categoryList = [];
+            }
             return $localStorage.categoryList;
         }
 
         function getNoteListById(id) {
-            return $localStorage.categoryList.filter(function (x) {
-                return x.id = id;
-            });
+            return $localStorage.categoryList[id - 1].noteList;
         }
 
         function getNoteById(categoryId, noteId) {
@@ -39,9 +40,7 @@
         }
 
         function saveCategory(category) {
-            var categoryList = getCategoryList();
-            categoryList.push(category);
-            $localStorage.categoryList = categoryList;
+            $localStorage.categoryList.push(category);
         }
 
         function updateCategory(category) {
@@ -51,7 +50,9 @@
         }
 
         function saveNote(categoryId, note) {
+
             $localStorage.categoryList[categoryId - 1].noteList.push(note);
+            return note;
         }
 
         function updateNote(categoryId, note) {
@@ -64,10 +65,11 @@
 
         function deleteCategory(id) {
             delete $localStorage.categoryList[id - 1];
+
         }
 
         function deleteNote(categoryId, id) {
-            delete $localStorage.categoryList[id - 1].noteList[id - 1];
+            delete $localStorage.categoryList[categoryId - 1].noteList[id - 1];
         }
     }
 

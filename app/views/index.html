@@ -5,7 +5,10 @@
             <div class="category-list">
                 <a class="category-item" ng-class="{'active': vm.categorySelected == category.id}"
                    ng-repeat="category in vm.categoryList track by $index"
-                   ng-click="vm.selectCategory(category.id)">{{category.name}}</a>
+                   ng-click="vm.selectCategory(category.id)">{{category.name}}
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAASFBMVEUjHyAAAAAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAAAAC9HfmoAAAAF3RSTlMAAMxsAc1d0F5R019SU1Th3dJQYGvDxHPPo44AAAABYktHRAH/Ai3eAAAACXBIWXMAAAEsAAABLABziOlSAAAAdElEQVQY00WP2RaAIAhExzQV2tf//9QkoHjy3oMwoIsJwQop9silukGqJQPEg5rGPKLVyG+PczAjPAkGM8Yimpm4Ggcdh3lZZuhb5w/r6ruUt33fjmRfGjN9eeDsBsYy+TWWT3eRJDwLwY8DlYir4j8f+X4AMHkESW3JiLwAAAAldEVYdGRhdGU6Y3JlYXRlADIwMTUtMDctMjVUMjE6NDk6MzgrMDg6MDDdS0qeAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDE0LTA1LTExVDA5OjAxOjM5KzA4OjAw9jWoEgAAAE50RVh0c29mdHdhcmUASW1hZ2VNYWdpY2sgNi44LjgtMTAgUTE2IHg4Nl82NCAyMDE1LTA3LTE5IGh0dHA6Ly93d3cuaW1hZ2VtYWdpY2sub3JnBQycNQAAAGN0RVh0c3ZnOmNvbW1lbnQAIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTcuMS4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgbjvP9wAAABh0RVh0VGh1bWI6OkRvY3VtZW50OjpQYWdlcwAxp/+7LwAAABh0RVh0VGh1bWI6OkltYWdlOjpIZWlnaHQAMTM1JNYMfAAAABd0RVh0VGh1bWI6OkltYWdlOjpXaWR0aAAxMzW3J1whAAAAGXRFWHRUaHVtYjo6TWltZXR5cGUAaW1hZ2UvcG5nP7JWTgAAABd0RVh0VGh1bWI6Ok1UaW1lADEzOTk3NzAwOTnFdIuRAAAAE3RFWHRUaHVtYjo6U2l6ZQAyLjgzS0JCZ0x+AwAAAFp0RVh0VGh1bWI6OlVSSQBmaWxlOi8vL2hvbWUvd3d3cm9vdC93d3cuZWFzeWljb24ubmV0L2Nkbi1pbWcuZWFzeWljb24uY24vc3JjLzExNjIzLzExNjIzMjgucG5nQjqKEgAAAABJRU5ErkJggg=="
+                         alt="" class="pull-right icon-close" ng-click="vm.delCategory(category.id)">
+                </a>
             </div>
             <div class="plus" ng-click="vm.open('category')">增加</div>
         </div>
@@ -13,7 +16,8 @@
         <div class="note-content">
             <div class="note-list">
                 <a class="note-item" ng-class="{'active': vm.noteSelected == note.id}" ng-repeat="note in vm.noteList"
-                   ng-click="vm.selectNote(note)">{{note.title}}</a>
+                   ng-click="vm.selectNote(note)">{{note.title}}
+                </a>
             </div>
             <div class="plus" ng-click="vm.open('note')">增加</div>
         </div>
