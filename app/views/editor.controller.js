@@ -1,17 +1,17 @@
 /**
  * Created by superman on 2016/4/13.
  */
-;(function () {
+;(function(){
     'use strict';
 
-    function EditorController() {
+    function EditorController(){
         var vm = this;
         vm.editor = '';
         vm.result = '';
         return vm;
     }
 
-    function IndexController($localStorage, NoteService, $filter) {
+    function IndexController($localStorage, NoteService, $filter){
         var vm = this;
         vm.$storage = $localStorage;
         vm.editStatus = false;
@@ -27,34 +27,34 @@
         //此时vm.categoryList 等于$localStorage.categoryList
         vm.categoryList = NoteService.getCategoryList();
 
-        vm.edit = function () {
+        vm.edit = function(){
             vm.editStatus = true;
         };
-        vm.save = function () {
+        vm.save = function(){
             vm.editStatus = false;
         };
 
-        vm.selectCategory = function (id) {
+        vm.selectCategory = function(id){
             vm.categorySelected = id;
             vm.noteList = vm.categoryList[id - 1].noteList;
             vm.note = vm.noteList[0] || {};
         };
-        vm.selectNote = function (note) {
+        vm.selectNote = function(note){
             vm.noteSelected = note.id;
             vm.note = note;
         };
 
-        vm.open = function (type) {
+        vm.open = function(type){
             vm.type = type;
             vm.openModal = true;
         };
-        vm.add = function (type) {
+        vm.add = function(type){
             //添加分类
-            if (type == 'category') {
+            if(type == 'category'){
                 var category = {
-                    id: NoteService.generateId(vm.categoryList),
-                    name: vm.name,
-                    noteList: []
+                    id : NoteService.generateId(vm.categoryList),
+                    name : vm.name,
+                    noteList : []
                 };
                 NoteService.saveCategory(category);
                 vm.name = '';
@@ -64,12 +64,12 @@
                 vm.note = vm.noteList[0] || {};
             }
             //添加笔记本
-            else if (type == 'note') {
+            else if(type == 'note'){
                 var note = {
-                    id: NoteService.generateId(NoteService.getNoteListById(vm.categorySelected)),
-                    title: vm.name,
-                    createTime: $filter('date')(new Date(), 'yyyy-MM-dd HH:mm:ss'),
-                    updateTime: $filter('date')(new Date(), 'yyyy-MM-dd HH:mm:ss')
+                    id : NoteService.generateId(NoteService.getNoteListById(vm.categorySelected)),
+                    title : vm.name,
+                    createTime : $filter('date')(new Date(), 'yyyy-MM-dd HH:mm:ss'),
+                    updateTime : $filter('date')(new Date(), 'yyyy-MM-dd HH:mm:ss')
                 };
                 vm.note = NoteService.saveNote(vm.categorySelected, note);
                 vm.name = '';
@@ -80,16 +80,16 @@
 
         };
 
-        vm.cancel = function () {
+        vm.cancel = function(){
             vm.openModal = false;
         };
 
-        vm.delCategory = function (id) {
+        vm.delCategory = function(id){
             NoteService.deleteCategory(id);
             event.preventDefault();
         };
 
-        vm.delNote = function (id) {
+        vm.delNote = function(id){
             NoteService.deteleNote(id);
             event.preventDefault();
         }
@@ -97,15 +97,15 @@
 
     IndexController.$inject = ['$localStorage', 'NoteService', '$filter'];
     angular.module('myApp.editor', ['ngRoute', 'hljs', 'editor.filter', 'ngStorage', 'editor.service'])
-        .config(['$routeProvider', function ($routeProvider) {
+        .config(['$routeProvider', function($routeProvider){
             $routeProvider
                 .when('/editor', {
-                    templateUrl: 'views/editor.html',
-                    controller: 'EditorController'
+                    templateUrl : 'views/editor.html',
+                    controller : 'EditorController'
                 })
                 .when('/index', {
-                    templateUrl: 'views/index.html',
-                    controller: 'IndexController'
+                    templateUrl : 'views/index.html',
+                    controller : 'IndexController'
 
                 })
         }])
