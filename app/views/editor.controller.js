@@ -24,20 +24,43 @@
         vm.noteList = [];
         vm.note = {};
 
-        //此时vm.categoryList 等于$localStorage.categoryList
-        vm.categoryList = NoteService.getCategoryList();
-
+        var Note = {
+            init : function(){
+                this.initCategory();
+                this.initNote(vm.categorySelected);
+            },
+            initCategory : function(){
+                //此时vm.categoryList 等于$localStorage.categoryList
+                vm.categoryList = NoteService.getCategoryList();
+            },
+            initNote : function(id){
+                vm.noteList = NoteService.getNoteListById(id);
+                if(vm.noteList.length != 0){
+                    vm.note = vm.noteList[0];
+                    vm.noteSelected = vm.note.id;
+                }
+            },
+            resetNote : function(){
+                vm.note = {};
+            }
+        };
+        //初始化显示
+        Note.init();
         vm.edit = function(){
             vm.editStatus = true;
         };
+        /**
+         * 保存修改的note
+         */
         vm.save = function(){
             vm.editStatus = false;
+            vm.note.updateTime = $filter('date')(new Date(), 'yyyy-MM-dd HH:mm:ss');
+            NoteService.updateNote(vm.categorySelected, vm.note);
         };
 
         vm.selectCategory = function(id){
             vm.categorySelected = id;
-            vm.noteList = vm.categoryList[id - 1].noteList;
-            vm.note = vm.noteList[0] || {};
+            Note.initNote(id);
         };
         vm.selectNote = function(note){
             vm.noteSelected = note.id;
@@ -60,8 +83,7 @@
                 vm.name = '';
                 vm.openModal = false;
                 vm.categorySelected = category.id;
-                vm.noteList = vm.categoryList[vm.categorySelected - 1].noteList;
-                vm.note = vm.noteList[0] || {};
+                Note.initNote(vm.categorySelected);
             }
             //添加笔记本
             else if(type == 'note'){
@@ -75,7 +97,7 @@
                 vm.name = '';
                 vm.openModal = false;
                 vm.noteSelected = note.id;
-                vm.noteList = vm.categoryList[vm.categorySelected - 1].noteList;
+                vm.noteList = NoteService.getNoteListById(vm.categorySelected);
             }
 
         };
@@ -90,7 +112,8 @@
         };
 
         vm.delNote = function(id){
-            NoteService.deteleNote(id);
+            NoteService.deleteNote(vm.categorySelected, id);
+            Note.resetNote();
             event.preventDefault();
         }
     }
