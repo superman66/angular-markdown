@@ -5,5 +5,5 @@ angular.module('myApp', [
     'ngRoute',
     'myApp.editor'
 ]).config(['$routeProvider', function ($routeProvider) {
-    $routeProvider.otherwise({redirectTo: '/editor'});
+    $routeProvider.otherwise({redirectTo: '/index'});
 }]);

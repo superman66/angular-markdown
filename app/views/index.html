@@ -3,19 +3,21 @@
     <div class="content">
         <div class="category-content">
             <div class="category-list">
-                <a class="category-item" ng-class="{'active': vm.categorySelected == category.id}"
-                   ng-repeat="category in vm.categoryList"
-                   ng-click="vm.selectCategory(category.id)">{{category.name}}</a>
+                <a class="category-item" ng-class="{'active': vm.categorySelected == category.id}" ng-repeat="category in vm.categoryList track by $index" ng-click="vm.selectCategory(category.id)">{{category.name}}
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAASFBMVEUjHyAAAAAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAAAAC9HfmoAAAAF3RSTlMAAMxsAc1d0F5R019SU1Th3dJQYGvDxHPPo44AAAABYktHRAH/Ai3eAAAACXBIWXMAAAEsAAABLABziOlSAAAAdElEQVQY00WP2RaAIAhExzQV2tf//9QkoHjy3oMwoIsJwQop9silukGqJQPEg5rGPKLVyG+PczAjPAkGM8Yimpm4Ggcdh3lZZuhb5w/r6ruUt33fjmRfGjN9eeDsBsYy+TWWT3eRJDwLwY8DlYir4j8f+X4AMHkESW3JiLwAAAAldEVYdGRhdGU6Y3JlYXRlADIwMTUtMDctMjVUMjE6NDk6MzgrMDg6MDDdS0qeAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDE0LTA1LTExVDA5OjAxOjM5KzA4OjAw9jWoEgAAAE50RVh0c29mdHdhcmUASW1hZ2VNYWdpY2sgNi44LjgtMTAgUTE2IHg4Nl82NCAyMDE1LTA3LTE5IGh0dHA6Ly93d3cuaW1hZ2VtYWdpY2sub3JnBQycNQAAAGN0RVh0c3ZnOmNvbW1lbnQAIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTcuMS4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgbjvP9wAAABh0RVh0VGh1bWI6OkRvY3VtZW50OjpQYWdlcwAxp/+7LwAAABh0RVh0VGh1bWI6OkltYWdlOjpIZWlnaHQAMTM1JNYMfAAAABd0RVh0VGh1bWI6OkltYWdlOjpXaWR0aAAxMzW3J1whAAAAGXRFWHRUaHVtYjo6TWltZXR5cGUAaW1hZ2UvcG5nP7JWTgAAABd0RVh0VGh1bWI6Ok1UaW1lADEzOTk3NzAwOTnFdIuRAAAAE3RFWHRUaHVtYjo6U2l6ZQAyLjgzS0JCZ0x+AwAAAFp0RVh0VGh1bWI6OlVSSQBmaWxlOi8vL2hvbWUvd3d3cm9vdC93d3cuZWFzeWljb24ubmV0L2Nkbi1pbWcuZWFzeWljb24uY24vc3JjLzExNjIzLzExNjIzMjgucG5nQjqKEgAAAABJRU5ErkJggg==" alt="" class="pull-right icon-close" ng-click="vm.delCategory(category.id)">
+                </a>
             </div>
-            <div class="plus" ng-click="vm.open('分类')">增加</div>
+            <div class="plus" ng-click="vm.open('category')">增加</div>
         </div>
 
         <div class="note-content">
             <div class="note-list">
-                <a class="note-item" ng-class="{'active': vm.noteSelected == note.id}" ng-repeat="note in vm.noteList"
-                   ng-click="vm.selectNote(note)">{{note.title}}</a>
+                <a class="note-item" ng-class="{'active': vm.noteSelected == note.id}" ng-repeat="note in vm.noteList" ng-click="vm.selectNote(note)">{{note.title}}
+
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAASFBMVEUjHyAAAAAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAAAAC9HfmoAAAAF3RSTlMAAMxsAc1d0F5R019SU1Th3dJQYGvDxHPPo44AAAABYktHRAH/Ai3eAAAACXBIWXMAAAEsAAABLABziOlSAAAAdElEQVQY00WP2RaAIAhExzQV2tf//9QkoHjy3oMwoIsJwQop9silukGqJQPEg5rGPKLVyG+PczAjPAkGM8Yimpm4Ggcdh3lZZuhb5w/r6ruUt33fjmRfGjN9eeDsBsYy+TWWT3eRJDwLwY8DlYir4j8f+X4AMHkESW3JiLwAAAAldEVYdGRhdGU6Y3JlYXRlADIwMTUtMDctMjVUMjE6NDk6MzgrMDg6MDDdS0qeAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDE0LTA1LTExVDA5OjAxOjM5KzA4OjAw9jWoEgAAAE50RVh0c29mdHdhcmUASW1hZ2VNYWdpY2sgNi44LjgtMTAgUTE2IHg4Nl82NCAyMDE1LTA3LTE5IGh0dHA6Ly93d3cuaW1hZ2VtYWdpY2sub3JnBQycNQAAAGN0RVh0c3ZnOmNvbW1lbnQAIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTcuMS4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgbjvP9wAAABh0RVh0VGh1bWI6OkRvY3VtZW50OjpQYWdlcwAxp/+7LwAAABh0RVh0VGh1bWI6OkltYWdlOjpIZWlnaHQAMTM1JNYMfAAAABd0RVh0VGh1bWI6OkltYWdlOjpXaWR0aAAxMzW3J1whAAAAGXRFWHRUaHVtYjo6TWltZXR5cGUAaW1hZ2UvcG5nP7JWTgAAABd0RVh0VGh1bWI6Ok1UaW1lADEzOTk3NzAwOTnFdIuRAAAAE3RFWHRUaHVtYjo6U2l6ZQAyLjgzS0JCZ0x+AwAAAFp0RVh0VGh1bWI6OlVSSQBmaWxlOi8vL2hvbWUvd3d3cm9vdC93d3cuZWFzeWljb24ubmV0L2Nkbi1pbWcuZWFzeWljb24uY24vc3JjLzExNjIzLzExNjIzMjgucG5nQjqKEgAAAABJRU5ErkJggg==" alt="" class="pull-right icon-close" ng-click="vm.delNote(note.id)">
+                </a>
             </div>
-            <div class="plus" ng-click="vm.open('笔记本')">增加</div>
+            <div class="plus" ng-click="vm.open('note')">增加</div>
         </div>
         <div class="detail">
             <div class="detail-box">
@@ -30,21 +32,23 @@
                     <span ng-if="vm.editStatus">（支持markdown语法）</span>
                 </div>
                 <div class="post-content" ng-if="!vm.editStatus" ng-bind-html="vm.note.content | render"></div>
-                <textarea class="post-content" ng-model="vm.note.content"
-                          ng-if="vm.editStatus">{{vm.note.content}}</textarea>
+                <textarea class="post-content" ng-model="vm.note.content" ng-if="vm.editStatus">{{vm.note.content}}</textarea>
             </div>
         </div>
     </div>
     <div class="modal-mask modal-animate" ng-if="vm.openModal">
         <div class="modal">
-            <div class="modal-header">新增{{vm.type}}</div>
-            <div class="modal-body">
-                <input type="text" class="form-control" ng-model="vm.name" placeholder="请输入{{vm.type}}名称"/>
-            </div>
-            <div class="modal-footer">
-                <a class="btn btn-primary" ng-click="vm.add()">确定</a>
-                <a class="btn " ng-click="vm.cancel()">取消</a>
-            </div>
+            <form name="form" ng-submit="vm.add(vm.type)">
+                <div class="modal-header" ng-if="vm.type == 'category'">新增分类</div>
+                <div class="modal-header" ng-if="vm.type == 'note'">新增笔记本</div>
+                <div class="modal-body">
+                    <input type="text" class="form-control" name="name" ng-model="vm.name" placeholder="请输入" required/>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="submit" ng-disabled="form.name.$invalid" >确定</button>
+                    <a class="btn " ng-click="vm.cancel()">取消</a>
+                </div>
+            </form>
         </div>
     </div>
 </div>
