@@ -65,9 +65,11 @@ header {
 
     text-align: left;
 }
-.category-content .category-item:hover .icon-close{
+
+.category-content .category-item:hover .icon-close {
     display: block;
 }
+
 .note-content {
 
     float: left;
@@ -101,9 +103,11 @@ header {
 
     text-align: left;
 }
-.note-content .note-item:hover .icon-close{
+
+.note-content .note-item:hover .icon-close {
     display: block;
 }
+
 .note-content .note-item:hover, .active, .category-content .category-item:hover {
     background: #eee;
 }
@@ -197,6 +201,10 @@ header {
     background: #2a9292;
     color: #fff;
     border: #2a9292;
+}
+
+button[disabled], html input[disabled]{
+    opacity: 0.5;
 }
 
 .btn-edit {
