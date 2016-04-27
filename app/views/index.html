@@ -42,10 +42,10 @@
                 <div class="modal-header" ng-if="vm.type == 'category'">新增分类</div>
                 <div class="modal-header" ng-if="vm.type == 'note'">新增笔记本</div>
                 <div class="modal-body">
-                    <input type="text" class="form-control" ng-model="vm.name" placeholder="请输入"/>
+                    <input type="text" class="form-control" name="name" ng-model="vm.name" placeholder="请输入" required/>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-primary" type="submit">确定</button>
+                    <button class="btn btn-primary" type="submit" ng-disabled="form.name.$invalid" >确定</button>
                     <a class="btn " ng-click="vm.cancel()">取消</a>
                 </div>
             </form>
