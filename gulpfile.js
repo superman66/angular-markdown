@@ -175,12 +175,10 @@ gulp.task('app-rename', function () {
 
 
 /*bulid task*/
-gulp.task('mobile-build', ['mobile-clean', 'mobile-cleanIndex', 'mobile-images', 'mobile-css', 'mobile-js', 'mobile-lib', 'mobile-rename', 'mobile-revCss', 'mobile-revJs', 'mobile-revLib']);
-
 gulp.task('app-build', ['app-clean', 'app-cleanIndex',  'app-css', 'app-js', 'app-lib', 'app-rename', 'app-revCss', 'app-revJs', 'app-revLib']);
 
 gulp.task('default', function () {
-    gulp.start('app-build', 'mobile-build');
+    gulp.start('app-build');
 });
 
 
