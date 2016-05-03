@@ -21,19 +21,12 @@ header {
 }
 
 .category-content {
-
     float: left;
-
     height: 100%;
-
     position: relative;
-
     background: #fff;
-
     width: 200px;
-
     border: 1px solid #ddd;
-
     border-right: 0;
 }
 
@@ -52,17 +45,11 @@ header {
 }
 
 .category-content .category-item {
-
     display: block;
-
     text-decoration: none;
-
     color: #333;
-
     border-bottom: 1px solid #ddd;
-
     padding: 10px 0 10px 10px;
-
     text-align: left;
 }
 
@@ -71,36 +58,23 @@ header {
 }
 
 .note-content {
-
     float: left;
-
     width: 300px;
-
     position: relative;
-
     background: #fff;
-
     height: 100%;
-
     border: 1px solid #ddd;
 }
 
 .note-content .note-list {
-
 }
 
 .note-content .note-item {
-
     display: block;
-
     text-decoration: none;
-
     color: #333;
-
     border-bottom: 1px solid #ddd;
-
     padding: 15px 0px 15px 10px;
-
     text-align: left;
 }
 
@@ -115,7 +89,7 @@ header {
 .plus {
     position: absolute;
     bottom: 0;
-    border-top: 1px solid #504E4E;
+    border-top: 1px solid #504e4e;
     border-bottom: 1px solid #ddd;
     width: 100%;
     padding: 10px 0;
@@ -127,7 +101,7 @@ header {
 .detail {
     padding-left: 500px;
     height: 100%;
-    background: #FFFFFF;
+    background: #ffffff;
     width: 100%;
     border: 1px solid #eee;
     transition: all .5s;
@@ -147,6 +121,7 @@ header {
     width: 100%;
     top: 0;
     font-size: 14px;
+    z-index: 10;
 }
 
 .detail .post-date {
@@ -159,16 +134,34 @@ header {
     top: 50px;
     color: #999;
     font-size: 12px;
+    z-index: 10;
 }
 
 .detail .post-create {
-
 }
 
 .detail .post-update {
-
 }
 
+.detail .post-tag {
+    padding: 15px;
+    background: #eee;
+    border-bottom: 1px solid #ddd;
+    position: absolute;
+    height: 50px;
+    width: 100%;
+    top: 50px;
+    color: #999;
+    font-size: 12px;
+    z-index: 10;
+}
+
+.detail .tag {
+    background: #6F97F3;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+}
 .detail .post-content {
     padding: 15px;
     resize: none;
@@ -177,16 +170,20 @@ header {
     overflow-y: auto;
     height: 100%;
     padding-top: 115px;
+    position: absolute;
+    z-index: 1;
+    background: #fff;
+    left: 0;
 }
 
 .note-menu-move {
     transform: translateX(-500px);
-    /*position: absolute;*/
+    position: absolute;
 }
 
 .category-menu-move {
     transform: translateX(-200px);
-    /*position: absolute;*/
+    position: absolute;
 }
 
 .editor-move {
@@ -199,7 +196,7 @@ header {
 
 .btn {
     padding: 10px;
-    background: #9C9C9C;
+    background: #9c9c9c;
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 12px;
@@ -221,13 +218,13 @@ button[disabled], html input[disabled] {
     position: absolute;
     right: 15px;
     top: 6px;
+    z-index: 10;
 }
 
 .icon-close {
     padding: 4px 18px;
     display: none;
 }
-
 /*modal css*/
 .modal-mask {
     position: absolute;
@@ -249,7 +246,7 @@ button[disabled], html input[disabled] {
     margin: -100px 0 0 -200px;
     padding: 40px;
     border-radius: 5px;
-    border: 1px solid #8A8989;
+    border: 1px solid #8a8989;
 }
 
 .modal .modal-body {
@@ -277,4 +274,3 @@ button[disabled], html input[disabled] {
     border: 1px solid #ccc;
     border-radius: 4px;
 }
-
