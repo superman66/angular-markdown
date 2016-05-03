@@ -120,11 +120,12 @@
             NoteService.deleteNote(vm.categorySelected, id);
             Note.resetNote();
             event.preventDefault();
-        }
+        };
+
     }
 
     IndexController.$inject = ['$localStorage', 'NoteService', '$filter'];
-    angular.module('myApp.editor', ['ngRoute', 'hljs', 'editor.filter', 'ngStorage', 'editor.service'])
+    angular.module('myApp.editor', ['ngRoute', 'hljs', 'editor.filter', 'ngStorage', 'editor.service', 'editor.directive'])
         .config(['$routeProvider', function ($routeProvider) {
             $routeProvider
                 .when('/editor', {

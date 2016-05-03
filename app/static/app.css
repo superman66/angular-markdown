@@ -38,7 +38,7 @@ header {
 }
 
 .category-content, .note-content {
-    transition: all 1s;
+    transition: all .5s;
 }
 
 .category-content .category-list, .note-content .note-list {
@@ -130,7 +130,7 @@ header {
     background: #FFFFFF;
     width: 100%;
     border: 1px solid #eee;
-    /* position: relative; */
+    transition: all .5s;
 }
 
 .detail .detail-box {
@@ -179,8 +179,18 @@ header {
     padding-top: 115px;
 }
 
-.left-menu-move {
-    transform: translateX(-502px);
+.note-menu-move {
+    transform: translateX(-500px);
+    /*position: absolute;*/
+}
+
+.category-menu-move {
+    transform: translateX(-200px);
+    /*position: absolute;*/
+}
+
+.editor-move {
+    padding-left: 0;
 }
 
 .pull-right {
@@ -203,7 +213,7 @@ header {
     border: #2a9292;
 }
 
-button[disabled], html input[disabled]{
+button[disabled], html input[disabled] {
     opacity: 0.5;
 }
 

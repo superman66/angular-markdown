@@ -50,7 +50,7 @@
         }
 
         function getNoteById(categoryId, noteId){
-            var noteList = _getNoteListById(categoryId).filter(function(x){
+            var noteList = getNoteListById(categoryId).filter(function(x){
                 return x.id == noteId;
             });
             return noteList.length == 0 ? null : noteList[0];
@@ -76,7 +76,7 @@
 
         function updateNote(categoryId, note){
             var categoryIndex = getIndexById(getCategoryList(), categoryId);
-            var noteList = _getNoteListById(categoryId);
+            var noteList = getNoteListById(categoryId);
             if(note.id){
                 var noteIndex = getIndexById(noteList, note.id);
                 noteList[noteIndex] = note;
