@@ -21,24 +21,17 @@ header {
 }
 
 .category-content {
-
     float: left;
-
     height: 100%;
-
     position: relative;
-
     background: #fff;
-
     width: 200px;
-
     border: 1px solid #ddd;
-
     border-right: 0;
 }
 
 .category-content, .note-content {
-    transition: all 1s;
+    transition: all .5s;
 }
 
 .category-content .category-list, .note-content .note-list {
@@ -52,55 +45,36 @@ header {
 }
 
 .category-content .category-item {
-
     display: block;
-
     text-decoration: none;
-
     color: #333;
-
     border-bottom: 1px solid #ddd;
-
     padding: 10px 0 10px 10px;
-
     text-align: left;
 }
 
-.category-content .category-item:hover .icon-close {
+.category-content .category-item:hover .icon-close, .tag:hover .icon-close {
     display: block;
 }
 
 .note-content {
-
     float: left;
-
     width: 300px;
-
     position: relative;
-
     background: #fff;
-
     height: 100%;
-
     border: 1px solid #ddd;
 }
 
 .note-content .note-list {
-
 }
 
 .note-content .note-item {
-
     display: block;
-
     text-decoration: none;
-
     color: #333;
-
     border-bottom: 1px solid #ddd;
-
     padding: 15px 0px 15px 10px;
-
     text-align: left;
 }
 
@@ -115,7 +89,7 @@ header {
 .plus {
     position: absolute;
     bottom: 0;
-    border-top: 1px solid #504E4E;
+    border-top: 1px solid #504e4e;
     border-bottom: 1px solid #ddd;
     width: 100%;
     padding: 10px 0;
@@ -127,10 +101,10 @@ header {
 .detail {
     padding-left: 500px;
     height: 100%;
-    background: #FFFFFF;
+    background: #ffffff;
     width: 100%;
     border: 1px solid #eee;
-    /* position: relative; */
+    transition: all .5s;
 }
 
 .detail .detail-box {
@@ -147,6 +121,7 @@ header {
     width: 100%;
     top: 0;
     font-size: 14px;
+    z-index: 10;
 }
 
 .detail .post-date {
@@ -159,14 +134,42 @@ header {
     top: 50px;
     color: #999;
     font-size: 12px;
+    z-index: 10;
 }
 
 .detail .post-create {
-
 }
 
 .detail .post-update {
+}
 
+.detail .post-tag {
+    padding: 15px;
+    background: #eee;
+    border-bottom: 1px solid #ddd;
+    position: absolute;
+    height: 50px;
+    width: 100%;
+    top: 100px;
+    color: #999;
+    font-size: 12px;
+    z-index: 10;
+}
+
+.detail .tag {
+    background: #6F97F3;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    margin-right: 5px;
+}
+
+.detail .tag .icon-close {
+    position: absolute;
+    right: -17px;
+    top: -1px;
 }
 
 .detail .post-content {
@@ -176,11 +179,25 @@ header {
     width: 100%;
     overflow-y: auto;
     height: 100%;
-    padding-top: 115px;
+    padding-top: 165px;
+    position: absolute;
+    z-index: 1;
+    background: #fff;
+    left: 0;
 }
 
-.left-menu-move {
-    transform: translateX(-502px);
+.note-menu-move {
+    transform: translateX(-500px);
+    position: absolute;
+}
+
+.category-menu-move {
+    transform: translateX(-200px);
+    position: absolute;
+}
+
+.editor-move {
+    padding-left: 0;
 }
 
 .pull-right {
@@ -189,7 +206,7 @@ header {
 
 .btn {
     padding: 10px;
-    background: #9C9C9C;
+    background: #9c9c9c;
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 12px;
@@ -203,7 +220,7 @@ header {
     border: #2a9292;
 }
 
-button[disabled], html input[disabled]{
+button[disabled], html input[disabled] {
     opacity: 0.5;
 }
 
@@ -211,6 +228,7 @@ button[disabled], html input[disabled]{
     position: absolute;
     right: 15px;
     top: 6px;
+    z-index: 10;
 }
 
 .icon-close {
@@ -227,6 +245,7 @@ button[disabled], html input[disabled]{
     width: 100%;
     height: 100%;
     transform: scale(100%);
+    z-index: 999;
 }
 
 .modal {
@@ -239,7 +258,7 @@ button[disabled], html input[disabled]{
     margin: -100px 0 0 -200px;
     padding: 40px;
     border-radius: 5px;
-    border: 1px solid #8A8989;
+    border: 1px solid #8a8989;
 }
 
 .modal .modal-body {
@@ -268,3 +287,14 @@ button[disabled], html input[disabled]{
     border-radius: 4px;
 }
 
+/* webkit solution*/
+input ::-webkit-input-placeholder {
+    text-align: left;
+    color: #333;
+}
+
+/* mozilla solution*/
+input:-moz-placeholder {
+    text-align: left;
+    color: #333;
+}

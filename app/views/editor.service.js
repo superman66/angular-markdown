@@ -1,20 +1,21 @@
 /**
  * Created by superman on 2016/4/17.
  */
-;(function(){
+;(function () {
     "use strict";
-    function NoteService($localStorage){
+    function NoteService($localStorage) {
         return {
-            generateId : generateId,
-            getCategoryList : getCategoryList,
-            getNoteListById : getNoteListById,
-            getNoteById : getNoteById,
-            saveCategory : saveCategory,
-            updateCategory : updateCategory,
-            saveNote : saveNote,
-            updateNote : updateNote,
-            deleteCategory : deleteCategory,
-            deleteNote : deleteNote
+            generateId: generateId,
+            getCategoryList: getCategoryList,
+            getNoteListById: getNoteListById,
+            getNoteById: getNoteById,
+            saveCategory: saveCategory,
+            updateCategory: updateCategory,
+            saveNote: saveNote,
+            updateNote: updateNote,
+            deleteCategory: deleteCategory,
+            deleteNote: deleteNote,
+            delTag: delTag
         };
 
         /**
@@ -22,79 +23,88 @@
          * @param list
          * @param id
          */
-        function getIndexById(list, id){
+        function getIndexById(list, id) {
             var index = -1;
-            list.forEach(function(value, i){
-                if(value.id == id){
+            list.forEach(function (value, i) {
+                if (value.id == id) {
                     index = i;
                 }
             });
             return index;
         }
 
-        function generateId(list){
+        function generateId(list) {
             console.log(list);
             return list.length == 0 ? 1 : list[list.length - 1].id + 1;
         }
 
-        function getCategoryList(){
-            if(!$localStorage.categoryList){
+        function getCategoryList() {
+            if (!$localStorage.categoryList) {
                 $localStorage.categoryList = [];
             }
             return $localStorage.categoryList;
         }
 
-        function getNoteListById(id){
+        function getNoteListById(id) {
             var index = getIndexById(getCategoryList(), id);
             return $localStorage.categoryList[index].noteList;
         }
 
-        function getNoteById(categoryId, noteId){
-            var noteList = _getNoteListById(categoryId).filter(function(x){
+        function getNoteById(categoryId, noteId) {
+            var noteList = getNoteListById(categoryId).filter(function (x) {
                 return x.id == noteId;
             });
             return noteList.length == 0 ? null : noteList[0];
         }
 
-        function saveCategory(category){
+        function saveCategory(category) {
             $localStorage.categoryList.push(category);
         }
 
-        function updateCategory(category){
-            if(category.id){
+        function updateCategory(category) {
+            if (category.id) {
                 $localStorage.categoryList[category.id - 1] = category;
             }
         }
 
-        function saveNote(categoryId, note){
+        function saveNote(categoryId, note) {
             var categoryIndex = getIndexById(getCategoryList(), categoryId);
-            if(categoryIndex != -1){
+            if (categoryIndex != -1) {
                 $localStorage.categoryList[categoryIndex].noteList.push(note);
             }
             return note;
         }
 
-        function updateNote(categoryId, note){
+        function updateNote(categoryId, note) {
             var categoryIndex = getIndexById(getCategoryList(), categoryId);
-            var noteList = _getNoteListById(categoryId);
-            if(note.id){
+            var noteList = getNoteListById(categoryId);
+            if (note.id) {
                 var noteIndex = getIndexById(noteList, note.id);
                 noteList[noteIndex] = note;
                 $localStorage.categoryList[categoryIndex].noteList = noteList;
             }
         }
 
-        function deleteCategory(id){
+        function deleteCategory(id) {
             var index = getIndexById(getCategoryList(), id);
             $localStorage.categoryList.splice(index, 1);
 
         }
 
-        function deleteNote(categoryId, id){
+        function deleteNote(categoryId, id) {
             var categoryIndex = getIndexById(getCategoryList(), categoryId);
             var noteIndex = getIndexById(getNoteListById(categoryId), id);
             $localStorage.categoryList[categoryIndex].noteList.splice(noteIndex, 1);
         }
+
+        function delTag(categoryId, id, tag) {
+            var categoryIndex = getIndexById(getCategoryList(), categoryId);
+            var noteIndex = getIndexById(getNoteListById(categoryId), id);
+            $localStorage.categoryList[categoryIndex].noteList[noteIndex].tag = $localStorage.categoryList[categoryIndex].noteList[noteIndex].tag.filter(function (x) {
+                return x != tag;
+            });
+        }
+
     }
 
     NoteService.$inject = ['$localStorage'];

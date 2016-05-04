@@ -1,25 +1,29 @@
 <div ng-controller="IndexController as vm" class="index-container">
     <header>markdown 笔记本</header>
-    <div class="content">
-        <div class="category-content">
+    <div class="content" full-screen="" categoryTarget="category" noteTarget="note" editorTarget="editor">
+        <div class="category-content" id="category">
             <div class="category-list">
-                <a class="category-item" ng-class="{'active': vm.categorySelected == category.id}" ng-repeat="category in vm.categoryList track by $index" ng-click="vm.selectCategory(category.id)">{{category.name}}
-                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAASFBMVEUjHyAAAAAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAAAAC9HfmoAAAAF3RSTlMAAMxsAc1d0F5R019SU1Th3dJQYGvDxHPPo44AAAABYktHRAH/Ai3eAAAACXBIWXMAAAEsAAABLABziOlSAAAAdElEQVQY00WP2RaAIAhExzQV2tf//9QkoHjy3oMwoIsJwQop9silukGqJQPEg5rGPKLVyG+PczAjPAkGM8Yimpm4Ggcdh3lZZuhb5w/r6ruUt33fjmRfGjN9eeDsBsYy+TWWT3eRJDwLwY8DlYir4j8f+X4AMHkESW3JiLwAAAAldEVYdGRhdGU6Y3JlYXRlADIwMTUtMDctMjVUMjE6NDk6MzgrMDg6MDDdS0qeAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDE0LTA1LTExVDA5OjAxOjM5KzA4OjAw9jWoEgAAAE50RVh0c29mdHdhcmUASW1hZ2VNYWdpY2sgNi44LjgtMTAgUTE2IHg4Nl82NCAyMDE1LTA3LTE5IGh0dHA6Ly93d3cuaW1hZ2VtYWdpY2sub3JnBQycNQAAAGN0RVh0c3ZnOmNvbW1lbnQAIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTcuMS4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgbjvP9wAAABh0RVh0VGh1bWI6OkRvY3VtZW50OjpQYWdlcwAxp/+7LwAAABh0RVh0VGh1bWI6OkltYWdlOjpIZWlnaHQAMTM1JNYMfAAAABd0RVh0VGh1bWI6OkltYWdlOjpXaWR0aAAxMzW3J1whAAAAGXRFWHRUaHVtYjo6TWltZXR5cGUAaW1hZ2UvcG5nP7JWTgAAABd0RVh0VGh1bWI6Ok1UaW1lADEzOTk3NzAwOTnFdIuRAAAAE3RFWHRUaHVtYjo6U2l6ZQAyLjgzS0JCZ0x+AwAAAFp0RVh0VGh1bWI6OlVSSQBmaWxlOi8vL2hvbWUvd3d3cm9vdC93d3cuZWFzeWljb24ubmV0L2Nkbi1pbWcuZWFzeWljb24uY24vc3JjLzExNjIzLzExNjIzMjgucG5nQjqKEgAAAABJRU5ErkJggg==" alt="" class="pull-right icon-close" ng-click="vm.delCategory(category.id)">
+                <a class="category-item" ng-class="{'active': vm.categorySelected == category.id}"
+                   ng-repeat="category in vm.categoryList track by $index" ng-click="vm.selectCategory(category.id)">{{category.name}}
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAASFBMVEUjHyAAAAAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAAAAC9HfmoAAAAF3RSTlMAAMxsAc1d0F5R019SU1Th3dJQYGvDxHPPo44AAAABYktHRAH/Ai3eAAAACXBIWXMAAAEsAAABLABziOlSAAAAdElEQVQY00WP2RaAIAhExzQV2tf//9QkoHjy3oMwoIsJwQop9silukGqJQPEg5rGPKLVyG+PczAjPAkGM8Yimpm4Ggcdh3lZZuhb5w/r6ruUt33fjmRfGjN9eeDsBsYy+TWWT3eRJDwLwY8DlYir4j8f+X4AMHkESW3JiLwAAAAldEVYdGRhdGU6Y3JlYXRlADIwMTUtMDctMjVUMjE6NDk6MzgrMDg6MDDdS0qeAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDE0LTA1LTExVDA5OjAxOjM5KzA4OjAw9jWoEgAAAE50RVh0c29mdHdhcmUASW1hZ2VNYWdpY2sgNi44LjgtMTAgUTE2IHg4Nl82NCAyMDE1LTA3LTE5IGh0dHA6Ly93d3cuaW1hZ2VtYWdpY2sub3JnBQycNQAAAGN0RVh0c3ZnOmNvbW1lbnQAIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTcuMS4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgbjvP9wAAABh0RVh0VGh1bWI6OkRvY3VtZW50OjpQYWdlcwAxp/+7LwAAABh0RVh0VGh1bWI6OkltYWdlOjpIZWlnaHQAMTM1JNYMfAAAABd0RVh0VGh1bWI6OkltYWdlOjpXaWR0aAAxMzW3J1whAAAAGXRFWHRUaHVtYjo6TWltZXR5cGUAaW1hZ2UvcG5nP7JWTgAAABd0RVh0VGh1bWI6Ok1UaW1lADEzOTk3NzAwOTnFdIuRAAAAE3RFWHRUaHVtYjo6U2l6ZQAyLjgzS0JCZ0x+AwAAAFp0RVh0VGh1bWI6OlVSSQBmaWxlOi8vL2hvbWUvd3d3cm9vdC93d3cuZWFzeWljb24ubmV0L2Nkbi1pbWcuZWFzeWljb24uY24vc3JjLzExNjIzLzExNjIzMjgucG5nQjqKEgAAAABJRU5ErkJggg=="
+                         alt="" class="pull-right icon-close" ng-click="vm.delCategory(category.id)">
                 </a>
             </div>
             <div class="plus" ng-click="vm.open('category')">增加</div>
         </div>
 
-        <div class="note-content">
+        <div class="note-content" id="note">
             <div class="note-list">
-                <a class="note-item" ng-class="{'active': vm.noteSelected == note.id}" ng-repeat="note in vm.noteList" ng-click="vm.selectNote(note)">{{note.title}}
+                <a class="note-item" ng-class="{'active': vm.noteSelected == note.id}" ng-repeat="note in vm.noteList"
+                   ng-click="vm.selectNote(note)">{{note.title}}
 
-                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAASFBMVEUjHyAAAAAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAAAAC9HfmoAAAAF3RSTlMAAMxsAc1d0F5R019SU1Th3dJQYGvDxHPPo44AAAABYktHRAH/Ai3eAAAACXBIWXMAAAEsAAABLABziOlSAAAAdElEQVQY00WP2RaAIAhExzQV2tf//9QkoHjy3oMwoIsJwQop9silukGqJQPEg5rGPKLVyG+PczAjPAkGM8Yimpm4Ggcdh3lZZuhb5w/r6ruUt33fjmRfGjN9eeDsBsYy+TWWT3eRJDwLwY8DlYir4j8f+X4AMHkESW3JiLwAAAAldEVYdGRhdGU6Y3JlYXRlADIwMTUtMDctMjVUMjE6NDk6MzgrMDg6MDDdS0qeAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDE0LTA1LTExVDA5OjAxOjM5KzA4OjAw9jWoEgAAAE50RVh0c29mdHdhcmUASW1hZ2VNYWdpY2sgNi44LjgtMTAgUTE2IHg4Nl82NCAyMDE1LTA3LTE5IGh0dHA6Ly93d3cuaW1hZ2VtYWdpY2sub3JnBQycNQAAAGN0RVh0c3ZnOmNvbW1lbnQAIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTcuMS4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgbjvP9wAAABh0RVh0VGh1bWI6OkRvY3VtZW50OjpQYWdlcwAxp/+7LwAAABh0RVh0VGh1bWI6OkltYWdlOjpIZWlnaHQAMTM1JNYMfAAAABd0RVh0VGh1bWI6OkltYWdlOjpXaWR0aAAxMzW3J1whAAAAGXRFWHRUaHVtYjo6TWltZXR5cGUAaW1hZ2UvcG5nP7JWTgAAABd0RVh0VGh1bWI6Ok1UaW1lADEzOTk3NzAwOTnFdIuRAAAAE3RFWHRUaHVtYjo6U2l6ZQAyLjgzS0JCZ0x+AwAAAFp0RVh0VGh1bWI6OlVSSQBmaWxlOi8vL2hvbWUvd3d3cm9vdC93d3cuZWFzeWljb24ubmV0L2Nkbi1pbWcuZWFzeWljb24uY24vc3JjLzExNjIzLzExNjIzMjgucG5nQjqKEgAAAABJRU5ErkJggg==" alt="" class="pull-right icon-close" ng-click="vm.delNote(note.id)">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAASFBMVEUjHyAAAAAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAjHyAAAAC9HfmoAAAAF3RSTlMAAMxsAc1d0F5R019SU1Th3dJQYGvDxHPPo44AAAABYktHRAH/Ai3eAAAACXBIWXMAAAEsAAABLABziOlSAAAAdElEQVQY00WP2RaAIAhExzQV2tf//9QkoHjy3oMwoIsJwQop9silukGqJQPEg5rGPKLVyG+PczAjPAkGM8Yimpm4Ggcdh3lZZuhb5w/r6ruUt33fjmRfGjN9eeDsBsYy+TWWT3eRJDwLwY8DlYir4j8f+X4AMHkESW3JiLwAAAAldEVYdGRhdGU6Y3JlYXRlADIwMTUtMDctMjVUMjE6NDk6MzgrMDg6MDDdS0qeAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDE0LTA1LTExVDA5OjAxOjM5KzA4OjAw9jWoEgAAAE50RVh0c29mdHdhcmUASW1hZ2VNYWdpY2sgNi44LjgtMTAgUTE2IHg4Nl82NCAyMDE1LTA3LTE5IGh0dHA6Ly93d3cuaW1hZ2VtYWdpY2sub3JnBQycNQAAAGN0RVh0c3ZnOmNvbW1lbnQAIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTcuMS4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgbjvP9wAAABh0RVh0VGh1bWI6OkRvY3VtZW50OjpQYWdlcwAxp/+7LwAAABh0RVh0VGh1bWI6OkltYWdlOjpIZWlnaHQAMTM1JNYMfAAAABd0RVh0VGh1bWI6OkltYWdlOjpXaWR0aAAxMzW3J1whAAAAGXRFWHRUaHVtYjo6TWltZXR5cGUAaW1hZ2UvcG5nP7JWTgAAABd0RVh0VGh1bWI6Ok1UaW1lADEzOTk3NzAwOTnFdIuRAAAAE3RFWHRUaHVtYjo6U2l6ZQAyLjgzS0JCZ0x+AwAAAFp0RVh0VGh1bWI6OlVSSQBmaWxlOi8vL2hvbWUvd3d3cm9vdC93d3cuZWFzeWljb24ubmV0L2Nkbi1pbWcuZWFzeWljb24uY24vc3JjLzExNjIzLzExNjIzMjgucG5nQjqKEgAAAABJRU5ErkJggg=="
+                         alt="" class="pull-right icon-close" ng-click="vm.delNote(note.id)">
                 </a>
             </div>
             <div class="plus" ng-click="vm.open('note')">增加</div>
         </div>
-        <div class="detail">
+        <div class="detail" id="editor">
             <div class="detail-box">
                 <div class="post-title">{{vm.note.title}}
                     <a class="pull-right btn btn-edit" ng-click="vm.edit()" ng-if="!vm.editStatus">编辑</a>
@@ -30,9 +34,20 @@
                     <span class="post-create">创建时间：{{vm.note.createTime}}</span>
                     <span class="post-update">更新时间：{{vm.note.updateTime}}</span>
                     <span ng-if="vm.editStatus">（支持markdown语法）</span>
+                    <a class="pull-right btn btn-edit" ng-click="toggleFullScreen()">{{fullScreenText}}</a>
+                    <a class="pull-right btn btn-edit" ng-click="toggleFullScreen()">{{fullScreenText}}</a>
+                </div>
+                <div class="post-tag" ng-if="vm.note.title">
+                    标签：
+                    <span class="tag" ng-repeat="tag in vm.note.tag track by $index">{{tag}}
+                   <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAABaFBMVEX///+8PT28PT28PT28PT28PT28PT28PT28PT28PT28PT28PT28PT28PT28PT28PT28PT28PT28PT28PT28PT28PT28PT28PT28PT28PT28PT28PT28PT28PT28PT28PT28PT28PT28PT28PT28PT28PT28PT3cmJjjra3nu7vcm5vYjo7kiorifn7gnp7jpaXmiYnqnJzenp7ZdnbcaGjYU1Phd3fgn5/io6PieHjdXl7idHTac3PRWVneaWnZVlbienr12dn01dXeX1/idnbWZGTSWVnfbGzbV1fga2vgaGjXZGTdaGjcW1vcWlrdXFzeYGDhc3PcZ2fbVlbbVFTcVlbdXV3fcHDRXFzdZ2fWRkfZTU7aU1TaTU7hcHDSYGDfnZ3fbm7UPDzeZmbea2vgbGzZTU3goKDenJzVRUXdZmbPVlbhbm7jenrOWFjcZmbQV1fNVVXhb2/WZ2fOU1PNVFTSXFz///+ol69VAAAAJ3RSTlMAAA/D2yo81bQSBr3q9tgenznz5wnt8AxO+UJILSfezDMYG+QwNgMDmhQIAAAAAWJLR0QAiAUdSAAAAAlwSFlzAAALEwAACxMBAJqcGAAAAORJREFUGNNjYMAAjEzMLKyMQMDGzsHJyMjAwMWtrsEDFGHj1dTi4wcKCGjr6OrxsAoK6RsYGgmLMDCIGpuYmpnziFlYWlnbCIkzMEjw2trZOzg6OTi7uEpKALUwSvG6uXt4elm5ePNKgwxlZBQU8/H18w8IBPHBAjI8QcEhoWHhILtAAqw8EZFR0TGxcfEgEQYGWeGExKTkFJPUNId0oAgDg1xGeGaWrRhLdk5wbjoPEwODfF6+SYGogiJ7YVFcMa8iA4OSckm2qAojI6d8aZmQFMhQWWU5FZDnmDhYVCHWqjEiAQDQJiG0vTw4rAAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAxNS0wNy0yNVQyMTo1MDo0MiswODowME5l6MMAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMTMtMDItMjJUMjE6NDE6NDErMDg6MDCRHtFTAAAATnRFWHRzb2Z0d2FyZQBJbWFnZU1hZ2ljayA2LjguOC0xMCBRMTYgeDg2XzY0IDIwMTUtMDctMTkgaHR0cDovL3d3dy5pbWFnZW1hZ2ljay5vcmcFDJw1AAAAGHRFWHRUaHVtYjo6RG9jdW1lbnQ6OlBhZ2VzADGn/7svAAAAF3RFWHRUaHVtYjo6SW1hZ2U6OkhlaWdodAAxNh2vXm8AAAAWdEVYdFRodW1iOjpJbWFnZTo6V2lkdGgAMTblAJ7iAAAAGXRFWHRUaHVtYjo6TWltZXR5cGUAaW1hZ2UvcG5nP7JWTgAAABd0RVh0VGh1bWI6Ok1UaW1lADEzNjE1NDA1MDH8Af0RAAAAE3RFWHRUaHVtYjo6U2l6ZQAzLjM1S0JCk4AbegAAAFp0RVh0VGh1bWI6OlVSSQBmaWxlOi8vL2hvbWUvd3d3cm9vdC93d3cuZWFzeWljb24ubmV0L2Nkbi1pbWcuZWFzeWljb24uY24vc3JjLzEwOTY3LzEwOTY3NzcucG5n8yy19wAAAABJRU5ErkJggg=="
+                         alt="" class="pull-right icon-close" ng-click="vm.delTag(tag)">
+                    </span>
+                    <input type="text" placeholder="添加标签" ng-blur="vm.addTag()" ng-model="vm.tag"/>
                 </div>
                 <div class="post-content" ng-if="!vm.editStatus" ng-bind-html="vm.note.content | render"></div>
-                <textarea class="post-content" ng-model="vm.note.content" ng-if="vm.editStatus">{{vm.note.content}}</textarea>
+                <textarea class="post-content" ng-model="vm.note.content"
+                          ng-if="vm.editStatus">{{vm.note.content}}</textarea>
             </div>
         </div>
     </div>
@@ -45,7 +60,7 @@
                     <input type="text" class="form-control" name="name" ng-model="vm.name" placeholder="请输入" required/>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-primary" type="submit" ng-disabled="form.name.$invalid" >确定</button>
+                    <button class="btn btn-primary" type="submit" ng-disabled="form.name.$invalid">确定</button>
                     <a class="btn " ng-click="vm.cancel()">取消</a>
                 </div>
             </form>
