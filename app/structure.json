@@ -1,66 +1,18 @@
 [
   {
     "id": 1,
-    "name": "1",
-    "noteList": []
-  },
-  {
-    "id": 4,
-    "name": "4",
+    "name": "JavaScript",
     "noteList": [
       {
         "id": 1,
-        "title": "4-1",
-        "createTime": "2016-04-26 22:52:59",
-        "updateTime": "2016-04-26 22:52:59"
-      },
-      {
-        "id": 2,
-        "title": "4-2",
-        "createTime": "2016-04-26 22:54:09",
-        "updateTime": "2016-04-26 22:54:09"
-      }
-    ]
-  },
-  {
-    "id": 5,
-    "name": "5",
-    "noteList": [
-      {
-        "id": 3,
-        "title": "5-3",
-        "createTime": "2016-04-26 22:55:51",
-        "updateTime": "2016-04-26 22:55:51"
-      }
-    ]
-  },
-  {
-    "id": 6,
-    "name": "分",
-    "noteList": []
-  },
-  {
-    "id": 7,
-    "name": "33",
-    "noteList": [
-      {
-        "id": 2,
-        "title": "23vwr",
-        "createTime": "2016-04-26 23:09:34",
-        "updateTime": "2016-04-26 23:09:34"
-      }
-    ]
-  },
-  {
-    "id": 8,
-    "name": "33",
-    "noteList": [
-      {
-        "id": 1,
-        "title": "基于LocalStorage的在线markdown笔记本",
-        "createTime": "2016-04-26 23:28:57",
-        "updateTime": "2016-04-27 00:01:48",
-        "content": "在之前markdown编辑器的基础上，再演化成一个基于localStorage的markdown在线笔记本。\n# 功能列表\n* 添加和删除分类\n* 添加和删除笔记本\n* 笔记本编辑与保存（更新未完成）\n* \n# 功能完善列表\n* 打开页面默认显示第一个分类下的第一条笔记（done）\n* 选择分类时，默认显示第一条笔记（done）\n* 新增笔记后，默认显示该笔记（done）\n* 笔记本可以添加多个标签\n* 支持分类和笔记本的右键菜单（菜单包括：重命名、删除、添加）\n* 支持全屏编辑\n* 支持多级分类\n\n# 知识点记录\n## 基于JSON存储数据\n由于没有接入数据库，因此采用的是localstorage的本地存储。localstorage是基于key-value的格式进行存储，类似于NoSql数据库。为了方便对数据进行增删改查，写了一个Service来专门处理。\n在写Service的过程中，思维一直受到之前关系型数据库的影响，总是想采用关系型数据库那套增删改查的方法来实现。结果发现确实有比较大的差异。\n* 自增长id\n 自增长id是出现在关系型数据库中，而基于JSON存储的NoSql则不存在这种id。因为所有的值都是以key-value形式存在。因此如果要实现自增长id的话，必须要考虑id的值要随着JSON的值增长而增长。同时要保证ID的唯一性。在删除该值之后，该值的所在的id便作废了，后续添加的值便不能拥有该ID。\n* 读取数据\n 基于JSON的存储，在存储列表数据时一般采用数组，而数组里面再包含一个对象来存储数据。这样在读取数据的时候，不能单纯通过id来获取数据。这时候可以通过先用ID获取该元素在数组中的下标，然后再根据下标去获取值。因为数组的操作都是基于下标进行的。\n* 删除数据\n 删除数据则是采用了数组的方法splice()\n\n## ECMAScript5的数组方法\n* forEach()\n* map()\n* filter()\n* every()和some()\n* reduce()和reduceRight()\n* indexOf()和lastIndexOf()"
+        "title": "JavaScript数组",
+        "tag": [
+          "JavaScript",
+          "数组",
+          "999"
+        ],
+        "createTime": "2016-05-04 10:25:48",
+        "updateTime": "2016-05-04 10:25:48"
       }
     ]
   }

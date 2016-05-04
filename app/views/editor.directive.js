@@ -12,13 +12,13 @@ angular.module('editor.directive', [])
                 var editorTarget = attr.editortarget;
                 var fullScreenEvent = {
                     fullScreen: function (categoryTarget, noteTarget, editorTarget) {
-                        //$('#' + categoryTarget).addClass('category-menu-move');
-                        //$('#' + noteTarget).addClass('note-menu-move');
+                        $('#' + categoryTarget).addClass('category-menu-move');
+                        $('#' + noteTarget).addClass('note-menu-move');
                         $('#' + editorTarget).addClass('editor-move');
                     },
                     exitFullScreen: function (categoryTarget, noteTarget, editorTarget) {
-                        //$('#' + categoryTarget).removeClass('category-menu-move');
-                        //$('#' + noteTarget).removeClass('note-menu-move');
+                        $('#' + categoryTarget).removeClass('category-menu-move');
+                        $('#' + noteTarget).removeClass('note-menu-move');
                         $('#' + editorTarget).removeClass('editor-move');
                     }
                 };

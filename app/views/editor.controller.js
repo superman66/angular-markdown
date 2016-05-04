@@ -95,6 +95,7 @@
                 var note = {
                     id: NoteService.generateId(NoteService.getNoteListById(vm.categorySelected)),
                     title: vm.name,
+                    tag: [],
                     createTime: $filter('date')(new Date(), 'yyyy-MM-dd HH:mm:ss'),
                     updateTime: $filter('date')(new Date(), 'yyyy-MM-dd HH:mm:ss')
                 };
@@ -121,6 +122,18 @@
             Note.resetNote();
             event.preventDefault();
         };
+
+        vm.addTag = function () {
+            if (!angular.isUndefined(vm.tag)) {
+                vm.note.tag.push(vm.tag);
+                vm.tag = '';
+                NoteService.updateNote(vm.categorySelected, vm.note);
+            }
+        };
+
+        vm.delTag = function (tag) {
+            NoteService.delTag(vm.categorySelected, vm.noteSelected, tag);
+        }
 
     }
 
