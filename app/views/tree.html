@@ -1,0 +1,13 @@
+<div ng-controller="TreeController as vm">
+    <ul ng-if="vm.items">
+        <li ng-repeat="item1 in vm.items">
+            {{item1.title}}
+            <span ng-if="item1.items"></span>
+            <ul ng-if="item1.items">
+                <li ng-repeat="item2 in item1.items">
+                    {{item2.title}}
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
