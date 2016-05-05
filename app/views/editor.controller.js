@@ -139,7 +139,7 @@
 
     IndexController.$inject = ['$localStorage', 'NoteService', '$filter'];
 
-    function TreeController() {
+    function TreeController(TreeService) {
         var vm = this;
         vm.items = [
             {
@@ -190,13 +190,13 @@
                     }
                 ]
             }
-        ]
-        
-        vm.toggle = function(){
-            
-        }
+        ];
+
+       // TreeService.enhance(vm.items);
+
     }
 
+    TreeController.$inject = ['TreeService'];
     angular.module('myApp.editor', ['ngRoute', 'hljs', 'editor.filter', 'ngStorage', 'editor.service', 'editor.directive'])
         .config(['$routeProvider', function ($routeProvider) {
             $routeProvider

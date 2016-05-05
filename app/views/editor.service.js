@@ -108,6 +108,44 @@
     }
 
     NoteService.$inject = ['$localStorage'];
+
+    function TreeService() {
+        var self = this;
+
+        //强化item
+        var enhanceItem = function (item, childName) {
+            item.$hasChildren = function () {
+                var subItems = this[childName];
+                return angular.isArray(subItems) && subItems.length;
+            };
+
+            item.$foldToggle = function () {
+                this.$folded = !this.$folded;
+            };
+
+            item.$isFolded = function () {
+                return this.$folded;
+            }
+        };
+
+        //对传进来的数据进行强化
+        this.enhance = function (items, childrenName) {
+            if (angular.isUndefined(childrenName)) {
+                childrenName = 'items';
+            }
+            angular.forEach(items, function (item) {
+                enhanceItem(item, childrenName);
+                //如果有子节点，则递归处理
+                if (item.$hasChildren()) {
+                    self.enhance(item[childrenName], childrenName);
+                }
+            });
+            return items;
+        };
+
+    }
+
     angular.module('editor.service', [])
-        .factory('NoteService', NoteService);
+        .factory('NoteService', NoteService)
+        .service('TreeService', TreeService);
 })();

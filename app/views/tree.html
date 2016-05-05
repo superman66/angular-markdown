@@ -1,9 +1,18 @@
 <div ng-controller="TreeController as vm">
     <ul ng-if="vm.items">
-        <li ng-repeat="item1 in vm.items">
-            {{item1.title}}
-            <span ng-if="item1.items"></span>
-            <ul ng-if="item1.items">
+        <li ng-repeat="item1 in vm.items | tree">
+            <div ng-click="item1.$foldToggle()">
+                <!--有子节点显示加减号-->
+                <span ng-if="item1.$hasChildren()">
+                    <!--未折叠显示减号-->
+                    <span ng-if="!item1.$isFolded()">-</span>
+                    <!--已折叠显示+号-->
+                    <span ng-if="item1.$isFolded()">+</span>
+                </span>
+                {{item1.title}}
+            </div>
+
+            <ul ng-if="item1.$hasChildren() && !item1.$isFolded()">
                 <li ng-repeat="item2 in item1.items">
                     {{item2.title}}
                 </li>

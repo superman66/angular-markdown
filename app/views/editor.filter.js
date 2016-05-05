@@ -3,7 +3,7 @@
  */
 
 ;(function () {
-    'uss strict';
+    'use strict';
     angular.module('editor.filter', [])
         .filter('render', ['$sce', function ($sce) {
             return function (input) {
@@ -15,5 +15,12 @@
 
                 return $sce.trustAsHtml(input);
             }
-        }]);
+        }])
+        .filter('tree', ['TreeService', function (TreeService) {
+            return function (items, childrenName) {
+                TreeService.enhance(items, childrenName);
+                return items;
+            }
+        }])
+    ;
 })();
