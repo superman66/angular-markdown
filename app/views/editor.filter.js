@@ -17,8 +17,8 @@
             }
         }])
         .filter('tree', ['TreeService', function (TreeService) {
-            return function (items, childrenName) {
-                TreeService.enhance(items, childrenName);
+            return function (items) {
+                TreeService.enhance(items);
                 return items;
             }
         }])

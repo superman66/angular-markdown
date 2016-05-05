@@ -188,12 +188,12 @@ header {
 
 .note-menu-move {
     transform: translateX(-500px);
-    position: absolute;
+    /*position: absolute;*/
 }
 
 .category-menu-move {
     transform: translateX(-200px);
-    position: absolute;
+    /*position: absolute;*/
 }
 
 .editor-move {

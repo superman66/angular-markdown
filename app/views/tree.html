@@ -13,8 +13,31 @@
             </div>
 
             <ul ng-if="item1.$hasChildren() && !item1.$isFolded()">
-                <li ng-repeat="item2 in item1.items">
-                    {{item2.title}}
+                <li ng-repeat="item2 in item1.items | tree">
+                    <div ng-click="item2.$foldToggle()">
+                        <!--有子节点显示加减号-->
+                        <span ng-if="item2.$hasChildren()">
+                            <!--未折叠显示减号-->
+                            <span ng-if="!item2.$isFolded()">-</span>
+                            <!--已折叠显示+号-->
+                            <span ng-if="item2.$isFolded()">+</span>
+                        </span>
+                        {{item2.title}}
+                    </div>
+                    <ul ng-if="item2.$hasChildren() && !item2.$isFolded()">
+                        <li ng-repeat="item3 in item2.items | tree">
+                            <div ng-click="item3.$foldToggle()">
+                                <!--有子节点显示加减号-->
+                                <span ng-if="item3.$hasChildren()">
+                                    <!--未折叠显示减号-->
+                                    <span ng-if="!item3.$isFolded()">-</span>
+                                    <!--已折叠显示+号-->
+                                    <span ng-if="item4.$isFolded()">+</span>
+                                </span>
+                                {{item3.title}}
+                            </div>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </li>
